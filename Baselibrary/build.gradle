@@ -1,0 +1,64 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // Anko Commons
+    api "org.jetbrains.anko:anko-commons:$anko_version"
+    // RxKotlin and RxAndroid
+    api "io.reactivex:rxkotlin:$rx_kotlin_version"
+    api "io.reactivex:rxandroid:${rx_android_version}"
+    //Retrofit
+    api "com.squareup.okhttp3:okhttp:${ok_http_version}"
+    api "com.squareup.retrofit2:retrofit:${retrofit_version}"
+    api "com.squareup.okhttp3:logging-interceptor:${ok_http_version}"
+    api "com.squareup.retrofit2:converter-gson:${retrofit_version}"
+    api "com.squareup.retrofit2:adapter-rxjava:${retrofit_version}"
+
+    //RxLifecycle
+    api "com.trello:rxlifecycle-kotlin:$rx_lifecycle_version"
+    api "com.trello:rxlifecycle-components:$rx_lifecycle_version"
+
+    api 'androidx.recyclerview:recyclerview:1.1.0-beta04'
+    api 'com.github.bumptech.glide:glide:3.7.0'
+
+    //Circle ImageView
+    api "de.hdodenhof:circleimageview:${circle_imageView_version}"
+    //Take Photo
+    api "com.jph.takephoto:takephoto_library:${take_photo_version}"
+    //Alert View
+    api "com.bigkoo:alertview:${alert_view_version}"
+    //七牛
+    api 'com.qiniu:qiniu-android-sdk:7.3.+'
+
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+}
